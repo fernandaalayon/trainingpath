@@ -54,9 +54,10 @@ public class LoginPageObject extends BasePageObject {
     }
 
     public boolean isLoginFormVisible(){
+
         try {
             this.wait.until(ExpectedConditions.and(
-                    ExpectedConditions.titleIs(ConfigurationConstants.getLoginTabTitle()),
+                    ExpectedConditions.titleContains(ConfigurationConstants.getLoginTabTitle()),
                     ExpectedConditions.visibilityOf(getLoginForm())));
             return true;
         }catch (TimeoutException e){
@@ -83,6 +84,13 @@ public class LoginPageObject extends BasePageObject {
 
     public void clickLoginButton(){
         this.click(this.getLoginButton());
+    }
+
+    public void loginUser(String name, String password){
+        this.username.sendKeys(name);
+        this.password.sendKeys(password);
+        this.loginButton.click();
+
     }
 
 }

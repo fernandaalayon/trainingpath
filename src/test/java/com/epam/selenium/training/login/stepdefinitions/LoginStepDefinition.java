@@ -28,4 +28,10 @@ public class LoginStepDefinition {
         assertTrue(loginPageObject.isLoginFormVisible(), "There is not login form");
         assertEquals(ConfigurationConstants.getLoginUrl(), loginPageObject.getCurrentURL() , "URLs are different");
     }
+
+    @When("the user presses the Login button")
+    public void the_user_presses_the_login_button() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
 }

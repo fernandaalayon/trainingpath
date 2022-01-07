@@ -11,12 +11,15 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.8.2'
     implementation group: 'org.junit.platform', name: 'junit-platform-suite', version: '1.8.2'
     implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.1.0'
     implementation group: 'io.cucumber', name: 'cucumber-junit-platform-engine', version: '7.1.0'
     implementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: '7.1.0'
+    implementation group: 'tech.grasshopper', name: 'extentreports-cucumber7-adapter', version: '1.1.0'
+    //implementation group: 'com.vimalselvam', name: 'cucumber-extentsreport', version: '3.1.1'
+    //implementation group: 'com.aventstack', name: 'extentreports', version: '5.0.8'
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.1.0'
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.0.3'
     testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.30'
@@ -27,6 +30,7 @@ dependencies {
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '4.1.0'
 }
 
-test {
+tasks.test {
     useJUnitPlatform()
+    systemProperty("cucumber.junit-platform.naming-strategy", "long")
 }
